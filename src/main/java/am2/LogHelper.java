@@ -45,6 +45,11 @@ public class LogHelper{
 	}
 
 	public static void trace(String format, Object... data){
-		log(Level.TRACE, format, data);
+		if(AM2PreloaderContainer.isDevEnvironment){
+			log(Level.INFO, "AM2 Trace: " + format, data);
+		}
+		else{
+			log(Level.TRACE, format, data);
+		}
 	}
 }
