@@ -9,6 +9,7 @@ import am2.ArsMagica2;
 import am2.armor.ArmorHelper;
 import am2.armor.infusions.GenericImbuement;
 import am2.enchantments.AMEnchantments;
+import am2.extensions.EntityExtension;
 import am2.packet.AMDataWriter;
 import am2.packet.AMNetHandler;
 import am2.proxy.tick.ServerTickHandler;
@@ -20,6 +21,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
@@ -75,6 +77,12 @@ public class PlayerTracker{
 				}
 			}
 		}
+	}
+	
+	@SubscribeEvent
+	public void onPlayerWake(PlayerWakeUpEvent event){
+		if (ArsMagica2.config.getWakingRegen())
+		EntityExtension.For(event.getEntityPlayer()).setCurrentMana(EntityExtension.For(event.getEntityPlayer()).getMaxMana());
 	}
 
 	@SubscribeEvent

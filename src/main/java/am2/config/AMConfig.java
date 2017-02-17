@@ -84,6 +84,7 @@ public class AMConfig extends Configuration{
 	
 	private final String KEY_manaRegenMod = "Mana_Regeneration_Modifier";
 	private final String KEY_regenIgnoresModifier = "Potion_Ignore_Modifier";
+	private final String KEY_wakingRegen = "Waking_Mana_Regen";
 
 	/**
 	 * Beta Particles
@@ -241,6 +242,7 @@ public class AMConfig extends Configuration{
 	private boolean allowVersionChecks;
 	private boolean canDryadsDespawn;
 	private boolean forceManaRegen;
+	private boolean wakingManaRegen;
 
 	public static final String DEFAULT_LANGUAGE = "en_US";
 
@@ -312,6 +314,8 @@ public class AMConfig extends Configuration{
 		manaRegenModifier = get(CATEGORY_GENERAL, KEY_manaRegenMod, 1, "Mana Regeneration Modifier, set to 0 to disable.").getDouble(1);
 		
 		forceManaRegen = get(CATEGORY_GENERAL, KEY_regenIgnoresModifier, true, "If true, entities affected by the mana regeneration potion effect will ignore the mana regeneration modifier.").getBoolean(true);
+		
+		wakingManaRegen = get(CATEGORY_GENERAL, KEY_wakingRegen, true, "If true, players return to full mana upon sleeping.").getBoolean(true);
 		
 		moonstoneMeteorsDestroyTerrain = get(CATEGORY_GENERAL, KEY_moonstoneMeteorsDestroyTerrain, true, "Should moonstone meteors destroy terrain when landing?  Keep in mind they will never land on anything other than grass.").getBoolean(true);
 
@@ -678,6 +682,10 @@ public class AMConfig extends Configuration{
 	
 	public boolean forceManaRegen(){
 		return this.forceManaRegen;
+	}
+	
+	public boolean getWakingRegen(){
+		return this.wakingManaRegen;
 	}
 	//====================================================================================
 	// Getters - Aura
