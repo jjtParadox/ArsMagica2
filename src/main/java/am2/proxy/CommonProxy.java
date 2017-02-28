@@ -439,6 +439,7 @@ public class CommonProxy implements IGuiHandler{
 		OreDictionary.registerOre("gemSunstone", new ItemStack(ItemDefs.itemOre, 1, ItemOre.META_SUNSTONE));
 		
 		OreDictionary.registerOre("logWood", new ItemStack(BlockDefs.blocks, 1, BlockWitchwoodLog()));
+		OreDictionary.registerOre("logWood", new ItemStack(BlockDefs.blocks, 1, BlockWitchwoodLog()));		
 
 	}
 }
