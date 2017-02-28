@@ -1,5 +1,7 @@
 package am2.proxy;
 
+import static am2.defs.BlockDefs.witchwoodLog;
+import static am2.defs.BlockDefs.witchwoodPlanks;
 import static am2.defs.IDDefs.*;
 
 import java.util.ArrayList;
@@ -438,8 +440,14 @@ public class CommonProxy implements IGuiHandler{
 		OreDictionary.registerOre("gemMoonstone", new ItemStack(ItemDefs.itemOre, 1, ItemOre.META_MOONSTONE));
 		OreDictionary.registerOre("gemSunstone", new ItemStack(ItemDefs.itemOre, 1, ItemOre.META_SUNSTONE));
 		
-		OreDictionary.registerOre("logWood", new ItemStack(BlockDefs.blocks, 1, BlockWitchwoodLog()));
-		OreDictionary.registerOre("plankWood", new ItemStack(BlockDefs.blocks, 1, BlockWitchwoodPlanks()));		
+		OreDictionary.registerOre("logWood", new ItemStack(BlockDefs.witchwoodLog));
+		OreDictionary.registerOre("plankWood", new ItemStack(BlockDefs.witchwoodPlanks));
+		OreDictionary.registerOre("treeSapling", new ItemStack(BlockDefs.witchwoodSapling));
+		OreDictionary.registerOre("treeLeaves", new ItemStack(BlockDefs.witchwoodLeaves));
+		OreDictionary.registerOre("stairWood", new ItemStack(BlockDefs.witchwoodStairs));
+		OreDictionary.registerOre("slabWood", new ItemStack(BlockDefs.witchwoodSingleSlab));
 
 	}
+
+
 }
