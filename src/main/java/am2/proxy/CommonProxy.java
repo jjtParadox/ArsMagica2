@@ -1,7 +1,5 @@
 package am2.proxy;
 
-import static am2.defs.BlockDefs.witchwoodLog;
-import static am2.defs.BlockDefs.witchwoodPlanks;
 import static am2.defs.IDDefs.*;
 
 import java.util.ArrayList;
