@@ -14,12 +14,14 @@ import am2.packet.AMNetHandler;
 import am2.proxy.tick.ServerTickHandler;
 import am2.utils.EntityUtils;
 import am2.utils.WebRequestUtils;
+import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
@@ -92,6 +94,16 @@ public class PlayerTracker{
 			}
 		}
 		//================================================================================
+		//Syncing data.
+		ArsMagica2.disabledSkills.getDisabledSkills(true);
+		int[] disabledSkills = ArsMagica2.disabledSkills.getDisabledSkillIDs();
+		AMDataWriter writer = new AMDataWriter();
+		writer.add(ArsMagica2.config.getSkillTreeSecondaryTierCap()).add(disabledSkills);
+		writer.add(ArsMagica2.config.getManaCap());
+		byte[] data = writer.generate();
+		AMNetHandler.INSTANCE.syncLoginData((EntityPlayerMP)event.player, data);
+		if (ServerTickHandler.lastWorldName != null)
+			AMNetHandler.INSTANCE.syncWorldName((EntityPlayerMP)event.player, ServerTickHandler.lastWorldName);
 	}
 	
 	public void onPlayerDeath(EntityPlayer player){
