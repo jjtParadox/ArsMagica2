@@ -1,5 +1,6 @@
 package am2.trackers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
@@ -26,6 +27,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
+import scala.actors.threadpool.Arrays;
 
 public class PlayerTracker{
 
@@ -171,6 +173,14 @@ public class PlayerTracker{
 			return aals.get(thePlayer.getDisplayName().getUnformattedText().toLowerCase());
 		return 0;
 	}
+	
+	private ArrayList<String> addContributors(ArrayList<String> lines){
+		//Growlith
+		lines.add("95ca1edb-b0d6-46a8-825d-2299763f03f0, :AL,3, :CL,http://i.imgur.com/QBCa5O0.png,6,growlith1223");
+		//JJT
+		lines.add("6b93546d-100a-403d-b352-f2bf75fd3b0c, :AL,3 :CL,http://i.imgur.com/QBCa5O0.png,6,jjtparadox");
+		return lines;
+	}
 
 	private void populateAALList(){
 
@@ -184,7 +194,9 @@ public class PlayerTracker{
 		
 		try{
 			String s = WebRequestUtils.sendPost(new String(dl), new HashMap<String, String>());
-			String[] lines = s.replace("\r\n", "\n").split("\n");
+			@SuppressWarnings("unchecked")
+			ArrayList<String> lines = new ArrayList<String>(Arrays.asList(s.replace("\r\n", "\n").split("\n")));
+			addContributors(lines);
 			for (String line : lines){
 				
 				String[] split = line.split(",");
