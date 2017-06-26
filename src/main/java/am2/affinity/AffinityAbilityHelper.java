@@ -40,10 +40,7 @@ import am2.api.affinity.Affinity;
 import am2.api.event.SpellCastEvent;
 import am2.extensions.AffinityData;
 import am2.utils.WorldUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -121,10 +118,9 @@ public class AffinityAbilityHelper {
 		for (AbstractAffinityAbility ability : GameRegistry.findRegistry(AbstractAffinityAbility.class).getValues()) {
 			if (ability.getKey() != null && ability.getKey().isPressed()) {
 				EntityPlayer player = ArsMagica2.proxy.getLocalPlayer();
-				//if (FMLCommonHandler.instance().getMinecraftServerInstance() == null)
-				//	return;
-
-				player = player.getEntityWorld().getPlayerEntityByUUID(player.getUniqueID());
+				if (FMLCommonHandler.instance().getMinecraftServerInstance() == null || FMLCommonHandler.instance().getMinecraftServerInstance().getEntityWorld() == null)
+					return;
+				player = FMLCommonHandler.instance().getMinecraftServerInstance().getEntityWorld().getPlayerEntityByUUID(player.getUniqueID());
 				if (ability.canApply(player)) {
 
 					WorldUtils.runSided(Side.CLIENT, ability.createRunnable(ArsMagica2.proxy.getLocalPlayer()));
