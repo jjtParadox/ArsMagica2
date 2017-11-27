@@ -81,11 +81,12 @@ public class AMConfig extends Configuration{
 	private final String KEY_EnableWitchwoodForest = "Enable_Witchwood_Forests";
 
 	private final String KEY_allowCreativeTargets = "Allow_Creative_Targets";
-	
+
 	private final String KEY_manaRegenMod = "Mana_Regeneration_Modifier";
 	private final String KEY_regenIgnoresModifier = "Potion_Ignore_Modifier";
 	private final String KEY_wakingRegen = "Waking_Mana_Regen";
 
+	private final String KEY_AllowSoulbound = "AllowSoulbound";
 	/**
 	 * Beta Particles
 	 **/
@@ -243,6 +244,7 @@ public class AMConfig extends Configuration{
 	private boolean canDryadsDespawn;
 	private boolean forceManaRegen;
 	private boolean wakingManaRegen;
+	private boolean allowSoulbound;
 
 	public static final String DEFAULT_LANGUAGE = "en_US";
 
@@ -310,13 +312,13 @@ public class AMConfig extends Configuration{
 		witchwoodForestRarity = get(CATEGORY_GENERAL, KEY_WitchwoodForestRarity, 6, "Sets how rare witchwood forests are.  Lower is more rare.").getInt();
 
 		allowCreativeTargets = get(CATEGORY_GENERAL, KEY_allowCreativeTargets, true, "Disable this to prevent spell effects on creative players").getBoolean(true);
-		
+
 		manaRegenModifier = get(CATEGORY_GENERAL, KEY_manaRegenMod, 1, "Mana Regeneration Modifier, set to 0 to disable.").getDouble(1);
-		
+
 		forceManaRegen = get(CATEGORY_GENERAL, KEY_regenIgnoresModifier, true, "If true, entities affected by the mana regeneration potion effect will ignore the mana regeneration modifier.").getBoolean(true);
-		
+
 		wakingManaRegen = get(CATEGORY_GENERAL, KEY_wakingRegen, true, "If true, players return to full mana upon sleeping.").getBoolean(true);
-		
+
 		moonstoneMeteorsDestroyTerrain = get(CATEGORY_GENERAL, KEY_moonstoneMeteorsDestroyTerrain, true, "Should moonstone meteors destroy terrain when landing?  Keep in mind they will never land on anything other than grass.").getBoolean(true);
 
 		suggestSpellNames = get(CATEGORY_GENERAL, KEY_moonstoneMeteorsDestroyTerrain, true, "Set this to true to allow AM2 to get random spell names from Seventh Sanctum, and suggest them when naming spells.  Naturally, an internet connection is required.  Keep in mind, while I try to keep things family friendly, it's possible that not all names generated are so.").getBoolean(true);
@@ -349,6 +351,8 @@ public class AMConfig extends Configuration{
 		canDryadsDespawn = get(CATEGORY_MOBS, KEY_CanDryadsDespawn, true, "Set this to false if you don't want dryads to despawn.").getBoolean(true);
 
 		enderAffinityAbilityCooldown = get(CATEGORY_GENERAL, KEY_EnderAffinityAbilityCooldown, 100, "Set this to the number of ticks between ender affinity teleports.").getInt();
+
+		allowSoulbound = get(CATEGORY_GENERAL, KEY_AllowSoulbound, true, "Set this to false to disable the soulbound enchantment.").getBoolean(true);
 
 		String digBlacklistString = get(CATEGORY_GENERAL, KEY_DigDisabledBlocks, "", "Comma-separated list of block IDs that dig cannot break.  If a block is flagged as unbreackable in code, Dig will already be unable to break it.  There is no need to set it here (eg, bedrock, etc.).  Dig also makes use of Forge block harvest checks.  This is mainly for fine-tuning.").getString();
 		digBlacklist = digBlacklistString.split(",");
@@ -675,18 +679,23 @@ public class AMConfig extends Configuration{
 	public boolean getAllowCreativeTargets(){
 		return this.allowCreativeTargets;
 	}
-	
+
 	public double getManaRegenModifier(){
 		return this.manaRegenModifier;
 	}
-	
+
 	public boolean forceManaRegen(){
 		return this.forceManaRegen;
 	}
-	
+
 	public boolean getWakingRegen(){
 		return this.wakingManaRegen;
 	}
+
+	public boolean getAllowSoulbound(){
+		return this.allowSoulbound;
+	}
+
 	//====================================================================================
 	// Getters - Aura
 	//====================================================================================
