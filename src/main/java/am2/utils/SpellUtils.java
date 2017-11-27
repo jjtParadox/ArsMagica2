@@ -88,12 +88,8 @@ public class SpellUtils {
 	
 	public static void changeEnchantmentsForShapeGroup(ItemStack stack){
 		ItemStack constructed = merge(stack);
-		int looting = 0;
-		int silkTouch = 0;
-		for (int i = 0; i < numStages(constructed); ++i){
-			looting += countModifiers(SpellModifiers.FORTUNE_LEVEL, constructed);
-			silkTouch += countModifiers(SpellModifiers.SILKTOUCH_LEVEL, constructed);
-		}
+		int looting = countModifiers(SpellModifiers.FORTUNE_LEVEL, constructed);
+		int silkTouch = countModifiers(SpellModifiers.SILKTOUCH_LEVEL, constructed);;
 
 		AMEnchantmentHelper.fortuneStack(stack, looting);
 		AMEnchantmentHelper.lootingStack(stack, looting);
