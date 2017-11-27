@@ -1,33 +1,12 @@
-Ars Magica 2 - Reborn 1.10.2
+Ars Magica 2 - Reborn 1.10.2 MERGED
 ========
+This is a fork of Growlith1223's Ars Magica 2 version with almost all the open PRs from that repo merged in.
 
-This is a reworked version of the Ars Magica 2 mod by Mithion.
+In layman's terms, this version of Ars Magica 2 includes some suggested changes, bug fixes, and new features created by other developers.
 
+Check the [original repo](https://github.com/Growlith1223/ArsMagica2) for more information on what Ars Magica 2 is.
 
-
-## Useful Links
-* [Homepage](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1292222)
-* [Unofficial Wiki](http://am2.wikia.com/wiki/Ars_Magica_2_Wiki)
-* [How to Report a Bug Properly](http://pastebin.com/29r0Nhe0)
-
-## Currently in the API
-
- * Affinities
- * Abilities
- * Imbuements
- * Spell Parts (Shapes, Components, Modifiers)
- * Flickers
- * Skills
- * Skill Trees
- * Crafting Altar Materials
- * Rituals
- 
-## The Compendium Update
-The compendium is getting entirely reworked in a way that you'll need to add Entries in a different way that you previously did. Though this will allow you to have more that one kind of right page. For example you can check am2.defs.LoreDefs which contains all the pages definition.
- 
-
-
-## License
+# License
 This mod is open sourced under the Creative Commons 3.0 Attribution Non-Commercial License
 https://creativecommons.org/licenses/by-nc/3.0/legalcode
 
