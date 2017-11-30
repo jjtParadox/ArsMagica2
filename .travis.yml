@@ -24,4 +24,4 @@ deploy:
   on:
     repo: jjtParadox/ArsMagica2
     branch: 1.10.2-merged
-    condition: ! -z $TRAVIS_TAG
+    tags: true
