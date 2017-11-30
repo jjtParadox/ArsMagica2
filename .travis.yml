@@ -1,18 +1,27 @@
 language: java
 sudo: false
 jdk: oraclejdk8
+before_cache:
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
 before_install:
 - chmod +x gradlew
+install:
+- "./gradlew setupCiWorkspace"
 script:
-- "./gradlew check"
+- "./gradlew build"
 deploy:
   provider: releases
   api_key:
-    secure: RKWh9K+2+hdJx3OtiAEF9rE8Ln7qUreX7bHxecuIriA04QZgvpWHjHbS7Jn466UB7GqvLzc5sZuB44w/93a0epzYGVP+I5UXkXHJGxPjObd5zJmXLZuaLqI3mitls5aN+muB5yn3f1HZRFGRTU/40ZEnI7/aPns1XSrvvXjJ+yYuu9c2CWwSBviSE9buzCAkdA9O7WhnN17VJ7hgUlRzITYBrM8oCmzoJl50HqZ9+EB0oq9H/2+nDEHq6TS0XtKfj/leCpgD6RNKME9+F/qY6eLVQcukyygT73RyRKejCex4d5x6eNdSkAxOkeNl/zL1vD2h45zN1FZusmggVYi+Oqrk77ndksZmm6rtZCTNWu92s4j15I16XdZ8DdZdfLCz3aV4PK13DqD4X/Vykj45Ef7UEqJ7+ywvrcfuPBH23zR6eEvr+9j3Yzj9zonKfAHKoJiQBvOB+OUVYXFn+wDblUMKX4ECSbeyQGJEHUniVmvGl0tTtUcqNBaPpXA8r2eHm3564/RvRoQ412cJG6xMgCuYsC6jj3eQKgUNM6G7kEOcG+LygwssfnX8DaugtgBWrNaP2HduTWu7ePBFmTd1TPI2tm2c6F4RNSR6SvBowHlPN9bExQi08evoaGkw4MDfnm8wmfe0OzhXe4wWZX1EBs/OYfhO9VimM6sMIjMP5EE=
-  file: "${HOME}/build/libs/*.jar"
-  file_glob: "true"
+    secure: lVlwXvgDjS5M3Nd8L4BTE1PsWLs9ZQhv70K06W2BNeKhmUQfsJocrIlAoddURifuYv6Rbk2wXfEOZWkLqK7r0/BxKJqlKwQaHRC4jpHAt+WBPx+Kse3qFSeVfY485hNLxPQQQt1zQVXTLL9RAO4mVv3f8hETTU9ar5TpgIW+V+oo74+yIrKZIxAGeY6xJ6gmvrQ/a+D7FGR7tFyqBGv99BO5c6yWpoDg+aIItSlWQwBQ/jJ768opyb0xnzWWsc2bYCuu4k2n0BpKDDVH7fejehoFh1SzycgWlJ7v4U5OkgtXj5bpuMITZ6/3dHVSW1Z/UsEjxQhaN01g6Ga2Uu8Ye7eXcKSgKweZQ2+rrgMFdoQ6Vu2V9TW0HkNntKqNjXbOJ+YQiHN0LRmk4CB2Pgb45nY5y98ZDmX1PsKJCEF3iTyMBUiQZoycrfcMl18kSXsuVRv6EJ3smcKMiz2FmZqzG2f+bwXIq+2Vdfv9+8xrDkj3gVhra5uqqEeHs9AYRHZUds0xGIokMMmNTTcvj0L+0frZoKJuOcxCgMhZNwjX670pS7uhSRLzKGLj8dNbDuIBOcyObtqsS+TsY4y0+V2vPsKYXa6xTZHz9BKqWh4R+oa8/AduAxVvMZ/UgxNOctfXGsBvDjRKeOM2khKxSlxc6/NR6DEA0rhx8++NCPN1f38=
+  file: build/libs/*.jar
+  file_glob: true
   skip_cleanup: true
   on:
-    repo: Growlith1223/ArsMagica2
-    branch: 1.10.2
-    tags: true
+    repo: jjtParadox/ArsMagica2
+    branch: 1.10.2-merged
+    condition: ! -z $TRAVIS_TAG
