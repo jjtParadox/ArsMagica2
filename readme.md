@@ -1,4 +1,5 @@
 Ars Magica 2 - Reborn 1.10.2 MERGED
+[![Build Status](https://travis-ci.org/jjtParadox/ArsMagica2.svg?branch=1.10.2-merged)](https://travis-ci.org/jjtParadox/ArsMagica2)
 ========
 This is a fork of Growlith1223's Ars Magica 2 version with almost all the open PRs from that repo merged in.
 
