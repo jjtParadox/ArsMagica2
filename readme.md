@@ -7,6 +7,9 @@ In layman's terms, this version of Ars Magica 2 includes some suggested changes,
 
 Check the [original repo](https://github.com/Growlith1223/ArsMagica2) for more information on what Ars Magica 2 is.
 
+## Downloads
+Downloads can be found in the [releases](https://github.com/jjtParadox/ArsMagica2/releases) section. The `*-sources.jar` file and source code files are for developers only.
+
 # License
 This mod is open sourced under the Creative Commons 3.0 Attribution Non-Commercial License
 https://creativecommons.org/licenses/by-nc/3.0/legalcode
